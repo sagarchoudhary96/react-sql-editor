@@ -3,6 +3,21 @@ export const noop = () => {};
 
 export const DRAWER_WIDTH = 240;
 
+export const HOME_TAB_ID = "home_tab";
+
+export const DEFAULT_EDITOR_TAB = {
+  name: "Home",
+  id: HOME_TAB_ID,
+  value: "home",
+  canDelete: false,
+  query: "",
+  isActive: true,
+};
+
+export const EDITOR_TAB_ADD = "editor_tab_added";
+export const EDITOR_TAB_DELETE = "editor_tab_delete";
+export const EDITOR_TAB_CHANGE = "editor_tab_change";
+
 // These can be later on move to separate file making it easier to do localisation for our app
 // in case we have functionality to support different languages
 export const DEFAULT_STRINGS = {

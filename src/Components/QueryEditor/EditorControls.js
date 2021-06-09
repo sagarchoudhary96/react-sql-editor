@@ -3,8 +3,14 @@ import Button from "@material-ui/core/Button";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import Paper from "@material-ui/core/Paper";
 import PlayArrowRoundedIcon from "@material-ui/icons/PlayArrowRounded";
+import EditableTabs from "Components/EditableTabs";
 import MenuButton from "Components/MenuButton";
-import { noop } from "utils/constants/common";
+import {
+  EDITOR_TAB_ADD,
+  EDITOR_TAB_CHANGE,
+  EDITOR_TAB_DELETE,
+  noop,
+} from "utils/constants/common";
 
 // Editor Controls Styles
 const useStyles = makeStyles((theme) => ({
@@ -24,11 +30,25 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const EditorControls = ({ onRunQuery = noop }) => {
+const EditorControls = ({
+  editorTabs = [],
+  updateEditorTabs = noop,
+  onRunQuery = noop,
+}) => {
   const classes = useStyles();
 
   return (
     <Paper square classes={{ root: classes.controlsWrapperRootStyles }}>
+      <EditableTabs
+        tabsList={editorTabs}
+        onTabAdd={() => updateEditorTabs({ type: EDITOR_TAB_ADD })}
+        onTabDelete={(tabId) =>
+          updateEditorTabs({ type: EDITOR_TAB_DELETE, data: { id: tabId } })
+        }
+        onTabChange={(data) => {
+          updateEditorTabs({ type: EDITOR_TAB_CHANGE, data });
+        }}
+      />
       <Box className={classes.editorButtonsWrapper} display="flex">
         <Button
           variant="outlined"

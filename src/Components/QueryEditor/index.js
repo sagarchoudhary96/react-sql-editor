@@ -4,6 +4,7 @@ import AceEditor from "react-ace";
 import "ace-builds/src-min-noconflict/ext-language_tools";
 import "ace-builds/src-min-noconflict/mode-mysql";
 import "ace-builds/src-min-noconflict/theme-tomorrow";
+import useActiveQueryEditor from "hooks/useActiveQueryEditor";
 import { DEFAULT_STRINGS, noop } from "utils/constants/common";
 import { v4 as uuid } from "uuid";
 import EditorControls from "./EditorControls";
@@ -24,13 +25,20 @@ const useStyles = makeStyles((theme) => ({
 const QueryEditor = ({ onRunQuery = noop }) => {
   const classes = useStyles();
 
+  const { currentQuery, handleQueryChange, editorTabs, updateEditorTabs } =
+    useActiveQueryEditor();
+
   const handleRunQuery = () => {
     onRunQuery();
   };
 
   return (
     <Box>
-      <EditorControls onRunQuery={handleRunQuery} />
+      <EditorControls
+        editorTabs={editorTabs}
+        updateEditorTabs={updateEditorTabs}
+        onRunQuery={handleRunQuery}
+      />
       <AceEditor
         aria-label="query editor input"
         mode="mysql"
@@ -50,6 +58,8 @@ const QueryEditor = ({ onRunQuery = noop }) => {
           enableLiveAutocompletion: true,
           enableSnippets: true,
         }}
+        value={currentQuery}
+        onChange={handleQueryChange}
         className={classes.editorStyles}
         showLineNumbers
       />
