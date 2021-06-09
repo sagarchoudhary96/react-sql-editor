@@ -6,6 +6,7 @@ import {
   getToastProps,
   TOAST_POSITION,
 } from "utils/constants/ToastConstants";
+import PropTypes from "prop-types";
 
 const useStyles = makeStyles((theme) => ({
   alert: {
@@ -46,3 +47,12 @@ const Toast = ({
 };
 
 export default Toast;
+
+Toast.propTypes = {
+  show: PropTypes.bool,
+  containerProps: PropTypes.object,
+  alertProps: PropTypes.object,
+  type: PropTypes.string,
+  message: PropTypes.string,
+  position: PropTypes.string,
+};

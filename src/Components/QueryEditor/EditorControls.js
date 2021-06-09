@@ -11,6 +11,7 @@ import {
   EDITOR_TAB_DELETE,
   noop,
 } from "utils/constants/common";
+import PropTypes from "prop-types";
 
 // Editor Controls Styles
 const useStyles = makeStyles((theme) => ({
@@ -69,3 +70,9 @@ const EditorControls = ({
   );
 };
 export default EditorControls;
+
+EditorControls.propTypes = {
+  editorTabs: PropTypes.array,
+  updateEditorTabs: PropTypes.func.isRequired,
+  onRunQuery: PropTypes.func.isRequired,
+};

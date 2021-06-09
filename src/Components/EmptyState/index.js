@@ -3,6 +3,7 @@ import Paper from "@material-ui/core/Paper";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import LibraryBooksIcon from "@material-ui/icons/LibraryBooks";
+import PropTypes from "prop-types";
 
 const useStyles = makeStyles({
   wrapper: {
@@ -43,3 +44,11 @@ const EmptyState = ({
 };
 
 export default EmptyState;
+
+EmptyState.propTypes = {
+  title: PropTypes.string,
+  subtitle: PropTypes.string,
+  titleVariant: PropTypes.string,
+  subtitleVariant: PropTypes.string,
+  icon: PropTypes.element,
+};

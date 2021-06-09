@@ -7,6 +7,7 @@ import AddIcon from "@material-ui/icons/Add";
 import CustomTab from "./CustomTab";
 import { useState, useCallback } from "react";
 import { noop } from "utils/constants/common";
+import PropTypes from "prop-types";
 
 const useStyles = makeStyles({
   tabsContainer: {
@@ -98,3 +99,10 @@ const EditableTabs = ({
 };
 
 export default EditableTabs;
+
+EditableTabs.propTypes = {
+  tabList: PropTypes.array,
+  onTabAdd: PropTypes.func.isRequired,
+  onTabChange: PropTypes.func.isRequired,
+  onTabDelete: PropTypes.func.isRequired,
+};

@@ -5,6 +5,7 @@ import CloseIcon from "@material-ui/icons/Close";
 import HomeRoundedIcon from "@material-ui/icons/HomeRounded";
 import NoteOutlinedIcon from "@material-ui/icons/NoteOutlined";
 import { noop } from "utils/constants/common";
+import PropTypes from "prop-types";
 
 // Styles for custom tab
 const useStyles = makeStyles((theme) => ({
@@ -89,3 +90,8 @@ const TabLabel = ({ classes, tab, onDelete }) => {
   );
 };
 export default CustomTab;
+
+CustomTab.propTypes = {
+  tab: PropTypes.object.isRequired,
+  onDelete: PropTypes.func,
+};

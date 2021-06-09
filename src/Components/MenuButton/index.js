@@ -6,6 +6,7 @@ import GetAppRoundedIcon from "@material-ui/icons/GetAppRounded";
 import Menu from "@material-ui/core/Menu";
 import Button from "@material-ui/core/Button";
 import { noop } from "utils/constants/common";
+import PropTypes from "prop-types";
 
 const MenuButton = ({ title = "", menuItems = [], onMenuItemClick = noop }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -74,3 +75,9 @@ const MenuButton = ({ title = "", menuItems = [], onMenuItemClick = noop }) => {
 };
 
 export default MenuButton;
+
+MenuButton.propTypes = {
+  title: PropTypes.string.isRequired,
+  menuItems: PropTypes.array.isRequired,
+  onMenuItemClick: PropTypes.func,
+};

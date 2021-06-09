@@ -15,6 +15,7 @@ import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import Tooltip from "@material-ui/core/Tooltip";
 import { DEFAULT_STRINGS } from "utils/constants/common";
+import PropTypes from "prop-types";
 
 const useStyles = makeStyles((theme) => ({
   nested: {
@@ -97,3 +98,9 @@ const SidebarListItem = ({ listItem, subtitle, icon }) => {
 };
 
 export default SidebarListItem;
+
+SidebarListItem.propTypes = {
+  listItem: PropTypes.object.isRequired,
+  subtitle: PropTypes.string,
+  icon: PropTypes.element,
+};

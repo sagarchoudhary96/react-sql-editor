@@ -8,7 +8,7 @@ import {
 import Box from "@material-ui/core/Box";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import Typography from "@material-ui/core/Typography";
-
+import PropTypes from "prop-types";
 import { DEFAULT_STRINGS, noop } from "utils/constants/common";
 
 const useStyles = makeStyles({
@@ -17,11 +17,11 @@ const useStyles = makeStyles({
   },
 });
 
-export default function ImportFormDialog({
+const ImportFormDialog = ({
   showDialog = false,
   handleCancelAction = noop,
   handleSuccessAction = noop,
-}) {
+}) => {
   const classes = useStyles();
   return (
     <Dialog
@@ -76,4 +76,12 @@ export default function ImportFormDialog({
       </DialogActions>
     </Dialog>
   );
-}
+};
+
+export default ImportFormDialog;
+
+ImportFormDialog.propTypes = {
+  showDialog: PropTypes.bool,
+  handleCancelAction: PropTypes.func.isRequired,
+  handleSuccessAction: PropTypes.func.isRequired,
+};
