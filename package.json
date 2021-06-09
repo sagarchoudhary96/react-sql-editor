@@ -1,5 +1,6 @@
 {
   "name": "sql-editor",
+  "homepage": "https://sagarchoudhary96.github.io/react-sql-editor/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
