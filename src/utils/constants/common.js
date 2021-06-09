@@ -33,6 +33,9 @@ export const DEFAULT_STRINGS = {
     "Select your file by clicking on upload button to import data",
   BUTTON_OPEN_TEXT: "open",
   BUTTON_CANCEL_TEXT: "Cancel",
+  BUTTON_CLOSE_TEXT: "Close",
+  BUTTON_SAVE_CHANGES_TEXT: "Save Changes",
   BUTTON_UPLOAD_TEXT: "Upload",
   HEADING_COLUMNS: "Columns",
+  TABLE_ROW_DIALOG: "Row Details",
 };

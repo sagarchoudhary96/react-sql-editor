@@ -6,8 +6,9 @@ import TableCell from "@material-ui/core/TableCell";
 import TableContainer from "@material-ui/core/TableContainer";
 import TablePagination from "@material-ui/core/TablePagination";
 import TableRow from "@material-ui/core/TableRow";
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
 import TableHeader from "./TableHeader";
+import TableRowDialog from "./TableRowDialog";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -69,6 +70,24 @@ const QueryResultTable = ({ tableData = {} }) => {
     setPage(0);
   };
 
+  const [showTableRowDialog, setShowTableRowDialog] = useState(false);
+  const [currSelectedRow, setCurrSelectedRow] = useState();
+
+  const toggleTableRowDialogState = () => {
+    setShowTableRowDialog((val) => !val);
+  };
+
+  const handleTableRowDialogSuccess = () => {
+    // handle TableRow Edit/Save functionality here
+    toggleTableRowDialogState();
+    setCurrSelectedRow({});
+  };
+
+  const handleTableRowClick = (row) => {
+    setCurrSelectedRow(row);
+    toggleTableRowDialogState();
+  };
+
   // list of table rows based on the pagination filter
   const filteredRows = useMemo(() => {
     return tableRows.length > 0
@@ -99,6 +118,9 @@ const QueryResultTable = ({ tableData = {} }) => {
                   hover
                   tabIndex={-1}
                   key={`result-row-${rowIndex}`}
+                  onClick={() => {
+                    handleTableRowClick(row);
+                  }}
                 >
                   {Object.keys(row).map((key, cellIndex) => (
                     <TableCell
@@ -124,6 +146,12 @@ const QueryResultTable = ({ tableData = {} }) => {
         onChangePage={handleChangePage}
         onChangeRowsPerPage={handleChangeRowsPerPage}
         className={classes.tableFooter}
+      />
+      <TableRowDialog
+        row={currSelectedRow}
+        showDialog={showTableRowDialog}
+        handleCancelAction={toggleTableRowDialogState}
+        handleSuccessAction={handleTableRowDialogSuccess}
       />
     </Paper>
   );
