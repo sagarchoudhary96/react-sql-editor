@@ -5,9 +5,13 @@ import "ace-builds/src-min-noconflict/ext-language_tools";
 import "ace-builds/src-min-noconflict/mode-mysql";
 import "ace-builds/src-min-noconflict/theme-tomorrow";
 import useActiveQueryEditor from "hooks/useActiveQueryEditor";
+import useToast from "hooks/useToast";
+import PropTypes from "prop-types";
 import { DEFAULT_STRINGS, noop } from "utils/constants/common";
+import { TOAST_ERROR, TOAST_SUCCESS } from "utils/constants/ToastConstants";
 import { v4 as uuid } from "uuid";
 import EditorControls from "./EditorControls";
+import Toast from "Components/Toast";
 
 /**
  * Material Ui recommend writing css styles in hook style  (css in js)
@@ -27,9 +31,15 @@ const QueryEditor = ({ onRunQuery = noop }) => {
 
   const { currentQuery, handleQueryChange, editorTabs, updateEditorTabs } =
     useActiveQueryEditor();
+  const { isToastVisible, showToast, toastType, toastMessage } = useToast();
 
   const handleRunQuery = () => {
+    if (!currentQuery) {
+      showToast(TOAST_ERROR, "Please Enter Query");
+      return;
+    }
     onRunQuery();
+    showToast(TOAST_SUCCESS, "Query Ran Successfully");
   };
 
   return (
@@ -63,8 +73,13 @@ const QueryEditor = ({ onRunQuery = noop }) => {
         className={classes.editorStyles}
         showLineNumbers
       />
+      <Toast show={isToastVisible} type={toastType} message={toastMessage} />
     </Box>
   );
 };
 
 export default QueryEditor;
+
+QueryEditor.propTypes = {
+  onRunQuery: PropTypes.func.isRequired,
+};
