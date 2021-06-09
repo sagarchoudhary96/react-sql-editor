@@ -4,8 +4,9 @@ import AceEditor from "react-ace";
 import "ace-builds/src-min-noconflict/ext-language_tools";
 import "ace-builds/src-min-noconflict/mode-mysql";
 import "ace-builds/src-min-noconflict/theme-tomorrow";
-import { DEFAULT_STRINGS } from "utils/constants/common";
+import { DEFAULT_STRINGS, noop } from "utils/constants/common";
 import { v4 as uuid } from "uuid";
+import EditorControls from "./EditorControls";
 
 /**
  * Material Ui recommend writing css styles in hook style  (css in js)
@@ -20,11 +21,16 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const QueryEditor = () => {
+const QueryEditor = ({ onRunQuery = noop }) => {
   const classes = useStyles();
+
+  const handleRunQuery = () => {
+    onRunQuery();
+  };
 
   return (
     <Box>
+      <EditorControls onRunQuery={handleRunQuery} />
       <AceEditor
         aria-label="query editor input"
         mode="mysql"
