@@ -8,6 +8,8 @@ import EmptyState from "Components/EmptyState";
 import SidebarListItem from "Components/SideBar/SidebarListItem";
 import { DEFAULT_STRINGS, DRAWER_WIDTH } from "utils/constants/common";
 import Proptypes from "prop-types";
+import Book from "@material-ui/icons/Book";
+import { getSyntaxMockData } from "utils/mockData";
 
 // SideBar Styles
 const useStyles = makeStyles((theme) => ({
@@ -67,6 +69,13 @@ const SideBar = ({ showDrawer = true, items = [] }) => {
           ))}
         </List>
       )}
+      <Box py={2}>
+        <SidebarListItem
+          listItem={getSyntaxMockData()}
+          icon={<Book />}
+          subtitle={"Queries"}
+        />
+      </Box>
     </Drawer>
   );
 };
