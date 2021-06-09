@@ -3,7 +3,9 @@ import AppBar from "@material-ui/core/AppBar";
 import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
+import Button from "@material-ui/core/Button";
 import makeStyles from "@material-ui/core/styles/makeStyles";
+import PublishIcon from "@material-ui/icons/Publish";
 import { DEFAULT_STRINGS, noop } from "utils/constants/common";
 import PropTypes from "prop-types";
 
@@ -21,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Navbar = ({ onMenuButtonClick = noop }) => {
+const Navbar = ({ onMenuButtonClick = noop, onImportButtonClick = noop }) => {
   const classes = useStyles();
 
   return (
@@ -43,6 +45,15 @@ const Navbar = ({ onMenuButtonClick = noop }) => {
         >
           {DEFAULT_STRINGS.APP_TITLE}
         </Typography>
+        <Button
+          variant="outlined"
+          color="secondary"
+          size="small"
+          startIcon={<PublishIcon />}
+          onClick={onImportButtonClick}
+        >
+          {DEFAULT_STRINGS.IMPORT_DATA}
+        </Button>
       </Toolbar>
     </AppBar>
   );
@@ -52,4 +63,5 @@ export default Navbar;
 
 Navbar.propTypes = {
   onMenuButtonClick: PropTypes.func.isRequired,
+  onImportButtonClick: PropTypes.func.isRequired,
 };

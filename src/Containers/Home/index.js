@@ -1,3 +1,4 @@
+import ImportFormDialog from "Components/ImportFormDialog";
 import Navbar from "Components/Navbar";
 import SideBar from "Components/SideBar";
 import Playground from "Containers/PlayGround";
@@ -18,6 +19,17 @@ const Home = () => {
     setShowDrawer((show) => !show);
   }, [setShowDrawer]);
 
+  // State to toggle Import Data Dialog
+  const [showImportDialog, setShowImportDialog] = useState(false);
+
+  const toggleImportDialogState = () => {
+    setShowImportDialog((val) => !val);
+  };
+
+  const handleImportDialogSuccess = () => {
+    setShowImportDialog((val) => !val);
+  };
+
   // hook to fetch data from context
   const { tablesData } = useAppContext();
 
@@ -33,11 +45,21 @@ const Home = () => {
 
   return (
     <HomePageLayout
-      navBar={<Navbar onMenuButtonClick={toggleDrawerState} />}
+      navBar={
+        <Navbar
+          onMenuButtonClick={toggleDrawerState}
+          onImportButtonClick={toggleImportDialogState}
+        />
+      }
       sideBar={<SideBar showDrawer={showDrawer} items={sideBarItems} />}
     >
       {/* Content  for the Home page*/}
       <Playground />
+      <ImportFormDialog
+        showDialog={showImportDialog}
+        handleCancelAction={toggleImportDialogState}
+        handleSuccessAction={handleImportDialogSuccess}
+      />
     </HomePageLayout>
   );
 };
