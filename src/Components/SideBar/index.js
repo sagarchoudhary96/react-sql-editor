@@ -1,8 +1,13 @@
+import Box from "@material-ui/core/Box";
 import Drawer from "@material-ui/core/Drawer";
+import List from "@material-ui/core/List";
 import makeStyles from "@material-ui/core/styles/makeStyles";
+import Typography from "@material-ui/core/Typography";
 import clsx from "clsx";
+import EmptyState from "Components/EmptyState";
+import SidebarListItem from "Components/SideBar/SidebarListItem";
+import { DEFAULT_STRINGS, DRAWER_WIDTH } from "utils/constants/common";
 import Proptypes from "prop-types";
-import { DRAWER_WIDTH } from "utils/constants/common";
 
 // SideBar Styles
 const useStyles = makeStyles((theme) => ({
@@ -29,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 // SideBar Component
-const SideBar = ({ showDrawer = true }) => {
+const SideBar = ({ showDrawer = true, items = [] }) => {
   const classes = useStyles();
 
   return (
@@ -43,7 +48,25 @@ const SideBar = ({ showDrawer = true }) => {
       }}
       open={showDrawer}
     >
-      SideBar Drawer
+      <Box p={2}>
+        <Typography variant="h6">Tables</Typography>
+      </Box>
+      {items.length === 0 ? (
+        <EmptyState
+          title={DEFAULT_STRINGS.NO_TABLES_EXIST}
+          titleVariant="h6"
+          subtitle={DEFAULT_STRINGS.IMPORT_NEW_DATA_MESSAGE}
+        />
+      ) : (
+        <List>
+          {items.map((item, index) => (
+            <SidebarListItem
+              key={`${item.tableName}-${index}-table-metadata`}
+              listItem={item}
+            />
+          ))}
+        </List>
+      )}
     </Drawer>
   );
 };
