@@ -1,5 +1,6 @@
 import Navbar from "Components/Navbar";
 import SideBar from "Components/SideBar";
+import Playground from "Containers/PlayGround";
 import HomePageLayout from "layouts/HomePageLayout";
 import { useCallback, useState } from "react";
 
@@ -12,7 +13,6 @@ import { useCallback, useState } from "react";
 const Home = () => {
   // Sidebar State to toggle drawer
   const [showDrawer, setShowDrawer] = useState(true);
-
   const toggleDrawerState = useCallback(() => {
     setShowDrawer((show) => !show);
   }, [setShowDrawer]);
@@ -23,7 +23,7 @@ const Home = () => {
       sideBar={<SideBar showDrawer={showDrawer} />}
     >
       {/* Content  for the Home page*/}
-      <h3>Hello</h3>
+      <Playground />
     </HomePageLayout>
   );
 };

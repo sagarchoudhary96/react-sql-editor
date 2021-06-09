@@ -9,5 +9,6 @@ export const DEFAULT_STRINGS = {
   APP_TITLE: "SQL EDITOR",
   NO_TABLES_EXIST: "No table exists",
   IMPORT_NEW_DATA_MESSAGE: "Please import data to the Editor",
+  QUERY_EDITOR_PLACEHOLDER: "Write Query Here ...",
   HEADING_COLUMNS: "Columns",
 };
