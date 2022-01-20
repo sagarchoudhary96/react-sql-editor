@@ -1,0 +1,2 @@
+(this["webpackJsonpsql-editor"]=this["webpackJsonpsql-editor"]||[]).push([[4],{292:function(t,s,e){"use strict";e.r(s);var n=e(15),c=e(283),i=e.n(c),r=(e(289),e(290),e(291),e(2));s.default=function(t){return Object(r.jsx)(i.a,Object(n.a)({},t))}}}]);
+//# sourceMappingURL=4.23d73d3b.chunk.js.map
