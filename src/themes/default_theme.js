@@ -1,8 +1,8 @@
 import red from "@material-ui/core/colors/red";
-import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
+import createTheme from "@material-ui/core/styles/createTheme";
 
 // A custom default theme for this app
-const DefaultTheme = createMuiTheme({
+const DefaultTheme = createTheme({
   palette: {
     primary: {
       main: "rgb(238, 242, 244)",
