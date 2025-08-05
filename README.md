@@ -2,7 +2,7 @@
 
 ### [Live Version](https://sagarchoudhary96.github.io/react-sql-editor/)
 
-A Web App For Basic SQL editor view to demonstrate where your users can query easily on a table using SQL and have ui components for the functionalities that can be added.
+A Web App For Basic SQL editor view to demonstrate where users can query easily on a table using SQL and have ui components for the functionalities that can be added.
 
 ## Requirements
 
